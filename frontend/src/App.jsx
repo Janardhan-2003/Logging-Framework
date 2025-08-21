@@ -1,9 +1,11 @@
+
+import LoginPage from "./pages/LoginPage"
+
+
 function App() {
 
   return (
-    <div className='text-red-400'>
-      Hello World
-    </div>
+    <LoginPage />
   )
 }
 
