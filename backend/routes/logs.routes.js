@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const express=require('express')
+const express = require("express");
 const Log = require("../models/logs.model");
-const authMiddleware=require('../middlewares/authMiddleware')
+const authMiddleware = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 router.post("/ingest", authMiddleware, async (req, res) => {
@@ -11,7 +11,7 @@ router.post("/ingest", authMiddleware, async (req, res) => {
     const log = new Log({ appId, level, message, meta });
     await log.save();
 
-    return res.status(201).json({ success: ture, message: "Log Stored" });
+    return res.status(201).json({ success: true, message: "Log Stored" });
   } catch (error) {
     console.error("Failed to post log", error);
     return res
@@ -20,7 +20,7 @@ router.post("/ingest", authMiddleware, async (req, res) => {
   }
 });
 
-router.get("/:appId",authMiddleware, async (req, res) => {
+router.get("/:appId", authMiddleware, async (req, res) => {
   try {
     const { appId } = req.params;
 
