@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
 body{
-    box-sizing: border-box;
     background: linear-gradient(to bottom, black, rgb(39, 58, 39));
 }
