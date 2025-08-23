@@ -36,7 +36,7 @@ const MyApps = () => {
 
   return (
     <div className="text-white">
-      <div className="flex justify-between px-6 py-4">
+      <div className="flex justify-between px-6 py-4 mb-8">
         <h1 className="text-5xl font-medium">Your Applications</h1>
         <button
           type="button"
@@ -50,10 +50,11 @@ const MyApps = () => {
           {apps.map(({ title, appId, APIkey }) => (
             <li
               key={appId}
-              className="border border-slate-800 mb-8 py-4 px-6 w-2xl h-38 flex flex-col justify-between rounded-2xl"
+              className="border border-slate-800 mb-8 py-4 px-6 w-2xl h-54 flex flex-col justify-between rounded-2xl"
             >
               <h2 className="text-xl font-medium font-serif pb-4">{title}</h2>
               <div>
+                <label className="text-sm text-gray-500">App ID</label>
                 <div className="flex mb-2">
                   <span className="border border-slate-500 w-sm pt-2">
                     {appId}
@@ -64,8 +65,10 @@ const MyApps = () => {
                     className="border px-2 border-slate-500 cursor-pointer bg-green-950"
                   >
                     Copy
-                  </button>
+                  </button> <br/>
                 </div>
+                  <label className="text-sm text-gray-500">API Key</label>
+
                 <div className="flex mb-2">
                   <span className="border border-slate-500 w-sm pt-2">
                     {"*".repeat(APIkey.length)}
