@@ -1,18 +1,41 @@
-import React from 'react'
+import React from "react";
+import { auth } from "../auth/Firebase";
+import { signOut } from "firebase/auth";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <div className='bg-transparent border-b border-slate-800 text-slate-50 flex items-center justify-between px-4 py-3'>
-        <div>
-            <h1>Active tabs</h1>
-        </div>
-        <div className='flex mx-4 px-4 justify-between items-center'>
-            <p className='mx-4'>Home</p>
-            <p className='mx-4'>DashBoard</p>
-            <button className='bg-slate-950 w-26 h-10 rounded-full text-center cursor-pointer' type='button'>LogOut</button>
-        </div>
-    </div>
-  )
-}
+  const navigate = useNavigate();
 
-export default Navbar
+  const handleLogout = () => {
+    try {
+      signOut(auth).then(() => {
+        Cookies.remove("authToken");
+        navigate("/login");
+      });
+    } catch (e) {
+      console.error("Failed to logout", e);
+    }
+  };
+  return (
+    <div className="bg-transparent border-b border-slate-800 text-slate-50 flex items-center justify-between px-4 py-3">
+      <div>
+        <h1>Active tabs</h1>
+      </div>
+      <div className="flex mx-4 px-4 justify-between items-center">
+        <p className="bg-slate-700 w-10 h-10 text-center rounded-full py-1.5 mr-4 font-extrabold text-lg cursor-pointer">
+          P
+        </p>
+        <button
+          className="border border-slate-800 w-22 h-10 rounded-xl text-center cursor-pointer hover:border-slate-700"
+          type="button"
+          onClick={handleLogout}
+        >
+          LogOut
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

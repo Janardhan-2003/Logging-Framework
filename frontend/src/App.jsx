@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
+import DashBoard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -14,7 +14,7 @@ function App() {
           element={
             <ProtectedRoute>
               <Layout>
-                <HomePage />
+                <DashBoard />
               </Layout>
             </ProtectedRoute>
           }
